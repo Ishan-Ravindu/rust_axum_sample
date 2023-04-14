@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "rust_axum_sample",
-    "dateExported": "2023-04-13T08:48:59.941Z",
+    "dateExported": "2023-04-14T14:06:12.194Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -108,6 +108,39 @@
                     "isPath": false
                 }
             ],
+            "tests": []
+        },
+        {
+            "_id": "8abda724-643b-4588-89eb-6bf48bf91fdf",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "",
+            "name": "mirror_user_agent",
+            "url": "http://localhost:3000/mirror_user_agent",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-04-14T13:39:40.148Z",
+            "modified": "2023-04-14T13:47:32.244Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "93c566c0-7205-410f-8c4a-05c777cd0ec7",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "",
+            "name": "mirror_custom_header",
+            "url": "http://localhost:3000/mirror_custom_header",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-04-14T13:58:42.305Z",
+            "modified": "2023-04-14T14:05:57.884Z",
+            "headers": [
+                {
+                    "name": "custom_header",
+                    "value": "this is custom header"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ]
