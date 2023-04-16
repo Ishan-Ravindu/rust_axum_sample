@@ -10,6 +10,7 @@ mod read_middleware_custom_header;
 mod set_middleware_custom_header;
 mod always_errors;
 mod return_201;
+mod get_json;
 
 use axum::{
     body::Body,
@@ -29,6 +30,7 @@ use read_middleware_custom_header::read_middleware_custom_header;
 use set_middleware_custom_header::set_middleware_custom_header;
 use always_errors::always_errors;
 use return_201::return_201;
+use get_json::get_json;
 use tower_http::cors::{Any, CorsLayer};
 
 #[derive(Clone)]
@@ -64,4 +66,5 @@ pub fn create_routes() -> Router<Body> {
         .layer(cors)
         .route("/always_errors", get(always_errors))
         .route("/return_201", post(return_201))
+        .route("/get_json",get(get_json))
 }
