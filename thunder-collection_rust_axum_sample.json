@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "rust_axum_sample",
-    "dateExported": "2023-04-16T07:28:48.012Z",
+    "dateExported": "2023-04-16T18:12:08.927Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -173,6 +173,34 @@
                     "value": "message from custom header middleware"
                 }
             ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fc6a7958-0820-43fe-916f-c55213f41434",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "",
+            "name": "always_errors",
+            "url": "http://localhost:3000/always_errors",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-04-16T17:46:56.435Z",
+            "modified": "2023-04-16T17:47:45.165Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e2afcbcc-3ef0-4ff1-ba06-783ca0a28143",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "",
+            "name": "return_201",
+            "url": "http://localhost:3000/return_201",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2023-04-16T18:08:48.109Z",
+            "modified": "2023-04-16T18:09:09.702Z",
+            "headers": [],
             "params": [],
             "tests": []
         }
