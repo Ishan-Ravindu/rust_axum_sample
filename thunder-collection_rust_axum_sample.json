@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "rust_axum_sample",
-    "dateExported": "2023-04-14T14:06:12.194Z",
+    "dateExported": "2023-04-16T07:28:48.012Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -138,6 +138,39 @@
                 {
                     "name": "custom_header",
                     "value": "this is custom header"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6dc59a99-dfd9-4375-8380-c1cc48a9e8dc",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "",
+            "name": "middleware_message",
+            "url": "http://localhost:3000/middleware_message",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2023-04-15T17:04:04.760Z",
+            "modified": "2023-04-15T17:04:26.086Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7bb575f2-248e-4938-86cc-dcf28ab26f8f",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "",
+            "name": "read_middleware_custom_header",
+            "url": "http://localhost:3000/read_middleware_custom_header",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-04-16T07:28:01.168Z",
+            "modified": "2023-04-16T07:28:40.817Z",
+            "headers": [
+                {
+                    "name": "message",
+                    "value": "message from custom header middleware"
                 }
             ],
             "params": [],
