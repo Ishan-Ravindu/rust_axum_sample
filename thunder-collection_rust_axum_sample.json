@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "rust_axum_sample",
-    "dateExported": "2023-04-16T18:12:08.927Z",
+    "dateExported": "2023-04-17T12:18:50.755Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -202,6 +202,39 @@
             "modified": "2023-04-16T18:09:09.702Z",
             "headers": [],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "520f7367-6380-4cc3-8df1-b315e48fec66",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "",
+            "name": "get_json",
+            "url": "http://localhost:3000/get_json",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2023-04-16T18:22:48.142Z",
+            "modified": "2023-04-16T18:23:01.645Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9aea25d1-365d-4c2a-9555-4c20f7c6a263",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "",
+            "name": "validate_with_serde",
+            "url": "http://localhost:3000/validate_with_serde",
+            "method": "POST",
+            "sortNum": 150000,
+            "created": "2023-04-17T06:59:42.116Z",
+            "modified": "2023-04-17T07:02:40.830Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\":\"12345\"\n}",
+                "form": []
+            },
             "tests": []
         }
     ]
