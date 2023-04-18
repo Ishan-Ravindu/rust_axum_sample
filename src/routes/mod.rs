@@ -1,17 +1,4 @@
-mod hello_world;
-mod middleware_message;
-mod mirror_body_json;
-mod mirror_body_string;
-mod mirror_custom_header;
-mod mirror_user_agent;
-mod path_variables;
-mod query_params;
-mod read_middleware_custom_header;
-mod set_middleware_custom_header;
-mod always_errors;
-mod return_201;
-mod get_json;
-mod validate_with_serde;
+mod simple_route_practice;
 
 use axum::{
     body::Body,
@@ -19,21 +6,21 @@ use axum::{
     routing::{get, post},
     Extension, Router, middleware,
 };
-use hello_world::hello_world;
-use middleware_message::middleware_message;
-use mirror_body_json::mirror_body_json;
-use mirror_body_string::mirror_body_string;
-use mirror_custom_header::mirror_custom_header;
-use mirror_user_agent::mirror_user_agent;
-use path_variables::{hard_coded_path, path_variables};
-use query_params::query_params;
-use read_middleware_custom_header::read_middleware_custom_header;
-use set_middleware_custom_header::set_middleware_custom_header;
-use always_errors::always_errors;
-use return_201::return_201;
-use get_json::get_json;
-use validate_with_serde::validate_with_serde;
 use tower_http::cors::{Any, CorsLayer};
+use simple_route_practice::hello_world::hello_world;
+use simple_route_practice::middleware_message::middleware_message;
+use simple_route_practice::mirror_body_json::mirror_body_json;
+use simple_route_practice::mirror_body_string::mirror_body_string;
+use simple_route_practice::mirror_custom_header::mirror_custom_header;
+use simple_route_practice::mirror_user_agent::mirror_user_agent;
+use simple_route_practice::path_variables::{hard_coded_path, path_variables};
+use simple_route_practice::query_params::query_params;
+use simple_route_practice::read_middleware_custom_header::read_middleware_custom_header;
+use simple_route_practice::set_middleware_custom_header::set_middleware_custom_header;
+use simple_route_practice::always_errors::always_errors;
+use simple_route_practice::return_201::return_201;
+use simple_route_practice::get_json::get_json;
+use simple_route_practice::validate_with_serde::validate_with_serde;
 
 #[derive(Clone)]
 pub struct SharedData {
@@ -41,6 +28,7 @@ pub struct SharedData {
 }
 
 pub fn create_routes() -> Router<Body> {
+
     let cors = CorsLayer::new()
         .allow_methods([Method::POST, Method::GET])
         .allow_origin(Any);

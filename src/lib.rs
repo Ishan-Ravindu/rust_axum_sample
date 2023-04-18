@@ -5,7 +5,7 @@ mod routes;
 
 pub async fn run(database_uri:&str){
 
-    let db: DatabaseConnection = Database::connect(database_uri)
+    let _db: DatabaseConnection = Database::connect(database_uri)
         .await
         .expect("Database connection failed");
 
