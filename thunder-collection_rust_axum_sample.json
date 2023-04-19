@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "rust_axum_sample",
-    "dateExported": "2023-04-19T04:56:15.306Z",
+    "dateExported": "2023-04-19T12:49:29.025Z",
     "version": "1.1",
     "folders": [
         {
@@ -269,6 +269,39 @@
                 "raw": "{\n  \"email\":\"test@email.com\",\n  \"password\":\"12345678\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "514fce13-7f41-4fb9-9964-e5d11265352c",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "ad876417-e200-4c18-ab6e-151c9153cc08",
+            "name": "create_task",
+            "url": "http://localhost:3000/task",
+            "method": "POST",
+            "sortNum": 170000,
+            "created": "2023-04-19T10:12:24.453Z",
+            "modified": "2023-04-19T10:15:34.238Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"new todo\",\n  \"priority\":\"A\",\n  \"description\":\"new todo decription\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2278c4ce-086c-46d8-9c09-7439ced38cb9",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "ad876417-e200-4c18-ab6e-151c9153cc08",
+            "name": "get_one_task",
+            "url": "http://localhost:3000/task/2",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2023-04-19T12:47:31.806Z",
+            "modified": "2023-04-19T12:49:09.217Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]

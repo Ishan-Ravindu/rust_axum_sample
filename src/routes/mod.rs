@@ -26,6 +26,7 @@ use simple_route_practice::validate_with_serde::validate_with_serde;
 //database practice routes
 use database_practice::create_task::create_task;
 use database_practice::custom_json_extractor::custom_json_extractor;
+use database_practice::get_one_task::get_one_task;
 
 #[derive(Clone)]
 pub struct SharedData {
@@ -65,5 +66,6 @@ pub fn create_routes(db:DatabaseConnection) -> Router<Body> {
         .route("/validate_with_serde", post(validate_with_serde))
         .route("/task", post(create_task))
         .route("/custom_json_extractor", post(custom_json_extractor))
+        .route("/task/:task_id", get(get_one_task))
         .layer(Extension(db))
 }
