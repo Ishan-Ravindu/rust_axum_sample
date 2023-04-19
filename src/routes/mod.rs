@@ -1,4 +1,5 @@
 mod simple_route_practice;
+mod database_practice;
 
 use axum::{
     body::Body,
@@ -6,6 +7,7 @@ use axum::{
     routing::{get, post},
     Extension, Router, middleware,
 };
+use sea_orm::DatabaseConnection;
 use tower_http::cors::{Any, CorsLayer};
 use simple_route_practice::hello_world::hello_world;
 use simple_route_practice::middleware_message::middleware_message;
@@ -21,13 +23,16 @@ use simple_route_practice::always_errors::always_errors;
 use simple_route_practice::return_201::return_201;
 use simple_route_practice::get_json::get_json;
 use simple_route_practice::validate_with_serde::validate_with_serde;
+//database practice routes
+use database_practice::create_task::create_task;
+use database_practice::custom_json_extractor::custom_json_extractor;
 
 #[derive(Clone)]
 pub struct SharedData {
     message: String,
 }
 
-pub fn create_routes() -> Router<Body> {
+pub fn create_routes(db:DatabaseConnection) -> Router<Body> {
 
     let cors = CorsLayer::new()
         .allow_methods([Method::POST, Method::GET])
@@ -58,4 +63,7 @@ pub fn create_routes() -> Router<Body> {
         .route("/return_201", post(return_201))
         .route("/get_json",get(get_json))
         .route("/validate_with_serde", post(validate_with_serde))
+        .route("/task", post(create_task))
+        .route("/custom_json_extractor", post(custom_json_extractor))
+        .layer(Extension(db))
 }
