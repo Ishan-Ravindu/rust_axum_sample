@@ -1,4 +1,26 @@
-use axum::Extension;
-use sea_orm::DatabaseConnection;
+use axum::{Extension, Json};
+use sea_orm::{DatabaseConnection,Set, ActiveModelTrait};
+use serde::Deserialize;
+use crate::database::tasks;
 
-pub async fn create_task(Extension(db):Extension<DatabaseConnection>){}
+
+#[derive(Deserialize)]
+pub struct RequestTask{
+    title:String,
+    priority:Option<String>,
+    description:Option<String>
+}
+
+pub async fn create_task(Extension(db):Extension<DatabaseConnection>,Json(request_task):Json<RequestTask>){
+   
+    let new_task = tasks::ActiveModel{
+        title:Set(request_task.title),
+        priority:Set(request_task.priority),
+        description:Set(request_task.description),
+        ..Default::default()
+    };
+
+    let result = new_task.save(&db).await.unwrap();
+
+    dbg!(result);
+}

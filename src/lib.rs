@@ -2,6 +2,7 @@ use routes::create_routes;
 use sea_orm::{DatabaseConnection,Database};
 
 mod routes;
+mod database;
 
 pub async fn run(database_uri:&str){
 
