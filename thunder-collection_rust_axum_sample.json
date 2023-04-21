@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "rust_axum_sample",
-    "dateExported": "2023-04-19T17:50:17.058Z",
+    "dateExported": "2023-04-21T05:43:06.492Z",
     "version": "1.1",
     "folders": [
         {
@@ -295,19 +295,65 @@
             "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
             "containerId": "ad876417-e200-4c18-ab6e-151c9153cc08",
             "name": "get_task",
-            "url": "http://localhost:3000/task?priority=A",
+            "url": "http://localhost:3000/task/5",
             "method": "GET",
             "sortNum": 180000,
             "created": "2023-04-19T12:47:31.806Z",
-            "modified": "2023-04-19T17:50:06.401Z",
+            "modified": "2023-04-21T05:41:36.596Z",
             "headers": [],
-            "params": [
-                {
-                    "name": "priority",
-                    "value": "A",
-                    "isPath": false
-                }
-            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0e45d702-ffe7-460c-bd0d-720f63d24786",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "ad876417-e200-4c18-ab6e-151c9153cc08",
+            "name": "atomic_update",
+            "url": "http://localhost:3000/atomic_update/5",
+            "method": "PUT",
+            "sortNum": 190000,
+            "created": "2023-04-20T06:16:40.287Z",
+            "modified": "2023-04-20T07:01:06.344Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 5,\n    \"title\": \"new todo\",\n    \"priority\": \"B\",\n    \"description\": \"new todo decription\"\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3620eb1b-aaed-4749-83e3-b77bed29658c",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "ad876417-e200-4c18-ab6e-151c9153cc08",
+            "name": "partial_update",
+            "url": "http://localhost:3000/partial_update/5",
+            "method": "PATCH",
+            "sortNum": 200000,
+            "created": "2023-04-20T17:44:00.317Z",
+            "modified": "2023-04-20T18:10:05.731Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"title\": \"new todo\"\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "56615e56-e2bc-49a7-b5ea-a8dc7391133f",
+            "colId": "31f726c0-29ad-47de-ad0c-27227b90dec8",
+            "containerId": "ad876417-e200-4c18-ab6e-151c9153cc08",
+            "name": "delete_task",
+            "url": "http://localhost:3000/task/5",
+            "method": "DELETE",
+            "sortNum": 210000,
+            "created": "2023-04-21T05:20:50.318Z",
+            "modified": "2023-04-21T05:41:42.077Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]
