@@ -1,10 +1,10 @@
-use axum::{extract::Path, Extension, http::StatusCode};
+use axum::{extract::{Path, State},http::StatusCode};
 use sea_orm::{DatabaseConnection, EntityTrait, QueryFilter, ColumnTrait};
 use crate::database::tasks::{Entity as Tasks, self};
 
 pub async fn delete_task(
     Path(task_id):Path<i32>,
-    Extension(db):Extension<DatabaseConnection>
+    State(db):State<DatabaseConnection>
 )->Result<(),StatusCode>{
     // let task = if let Some(task) = Tasks::find_by_id(task_id)
     //     .one(&database)

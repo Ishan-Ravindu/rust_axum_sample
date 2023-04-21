@@ -1,4 +1,4 @@
-use axum::{extract::{Path, Query}, http::StatusCode, Extension, Json};
+use axum::{extract::{Path, Query, State}, http::StatusCode, Json};
 use sea_orm::{DatabaseConnection, EntityTrait, Condition, ColumnTrait, QueryFilter};
 use serde::{Deserialize, Serialize};
 
@@ -14,7 +14,7 @@ pub struct ResponseTask {
 
 pub async fn get_one_task(
     Path(task_id): Path<i32>,
-    Extension(db): Extension<DatabaseConnection>,
+    State(db):State<DatabaseConnection>,
 ) -> Result<Json<ResponseTask>, StatusCode> {
     let task = Task::find_by_id(task_id).one(&db).await.unwrap();
 
@@ -36,7 +36,7 @@ pub struct GetTaskQueryParams {
 }
 
 pub async fn get_all_task(
-    Extension(db): Extension<DatabaseConnection>,
+    State(db):State<DatabaseConnection>,
     Query(query_param):Query<GetTaskQueryParams>
 )-> Result<Json<Vec<ResponseTask>>, StatusCode> {
 

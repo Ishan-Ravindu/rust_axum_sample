@@ -1,4 +1,5 @@
-use axum::{extract::Path, Extension, Json, http::StatusCode};
+use axum::extract::State;
+use axum::{extract::Path, Json, http::StatusCode};
 use sea_orm::{EntityTrait, QueryFilter, ColumnTrait,Set};
 use sea_orm::{DatabaseConnection, prelude::DateTimeWithTimeZone};
 use serde::{Serialize, Deserialize};
@@ -20,7 +21,7 @@ pub struct RequestTask{
 
 pub async fn atomic_update(
     Path(task_id):Path<i32>,
-    Extension(db):Extension<DatabaseConnection>,
+    State(db):State<DatabaseConnection>,
     Json(task):Json<RequestTask>
 )->Result<(),StatusCode>{
     let update_task = tasks::ActiveModel{

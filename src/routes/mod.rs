@@ -2,10 +2,9 @@ mod simple_route_practice;
 mod database_practice;
 
 use axum::{
-    body::Body,
     http::Method,
     routing::{get, post,put, patch, delete},
-    Extension, Router, middleware,
+    Router, middleware, extract::FromRef,
 };
 use sea_orm::DatabaseConnection;
 use tower_http::cors::{Any, CorsLayer};
@@ -32,19 +31,21 @@ use database_practice::atomic_update::atomic_update;
 use database_practice::partial_update::partial_update;
 use database_practice::delete_task::delete_task;
 
-#[derive(Clone)]
-pub struct SharedData {
+#[derive(Clone,FromRef)]
+pub struct AppState {
     message: String,
+    database:DatabaseConnection
 }
 
-pub fn create_routes(db:DatabaseConnection) -> Router<Body> {
+pub fn create_routes(db:DatabaseConnection) -> Router {
 
     let cors = CorsLayer::new()
         .allow_methods([Method::POST, Method::GET])
         .allow_origin(Any);
 
-    let shared_data = SharedData {
+    let app_state = AppState {
         message: "hello from shared data".to_owned(),
+        database:db
     };
 
     Router::new()
@@ -62,7 +63,6 @@ pub fn create_routes(db:DatabaseConnection) -> Router<Body> {
         .route("/mirror_user_agent", get(mirror_user_agent))
         .route("/mirror_custom_header", get(mirror_custom_header))
         .route("/middleware_message", get(middleware_message))
-        .layer(Extension(shared_data))
         .layer(cors)
         .route("/always_errors", get(always_errors))
         .route("/return_201", post(return_201))
@@ -75,5 +75,5 @@ pub fn create_routes(db:DatabaseConnection) -> Router<Body> {
         .route("/atomic_update/:task_id", put(atomic_update))
         .route("/partial_update/:task_id", patch(partial_update))
         .route("/task/:task_id", delete(delete_task))
-        .layer(Extension(db))
+        .with_state(app_state)
 }

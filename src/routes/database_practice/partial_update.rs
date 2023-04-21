@@ -1,6 +1,6 @@
 use crate::database::tasks;
 use crate::database::tasks::Entity as Tasks;
-use axum::{extract::Path, http::StatusCode, Extension, Json};
+use axum::{extract::{Path, State}, http::StatusCode, Json};
 use sea_orm::{
     prelude::DateTimeWithTimeZone, ColumnTrait, DatabaseConnection, EntityTrait, IntoActiveModel,
     QueryFilter, Set,
@@ -38,11 +38,11 @@ pub struct RequestTask {
 
 pub async fn partial_update(
     Path(task_id): Path<i32>,
-    Extension(database): Extension<DatabaseConnection>,
+    State(db):State<DatabaseConnection>,
     Json(request_task): Json<RequestTask>,
 ) -> Result<(), StatusCode> {
     let mut db_task = if let Some(task) = Tasks::find_by_id(task_id)
-        .one(&database)
+        .one(&db)
         .await
         .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?
     {
@@ -73,7 +73,7 @@ pub async fn partial_update(
 
     Tasks::update(db_task)
         .filter(tasks::Column::Id.eq(task_id))
-        .exec(&database)
+        .exec(&db)
         .await
         .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
 

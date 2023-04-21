@@ -1,4 +1,4 @@
-use axum::{Extension, Json};
+use axum::{Json, extract::State};
 use sea_orm::{DatabaseConnection,Set, ActiveModelTrait};
 use serde::Deserialize;
 use crate::database::tasks;
@@ -11,7 +11,10 @@ pub struct RequestTask{
     description:Option<String>
 }
 
-pub async fn create_task(Extension(db):Extension<DatabaseConnection>,Json(request_task):Json<RequestTask>){
+pub async fn create_task(
+    State(db):State<DatabaseConnection>,
+    Json(request_task):Json<RequestTask>
+){
    
     let new_task = tasks::ActiveModel{
         title:Set(request_task.title),
