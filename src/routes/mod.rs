@@ -4,7 +4,7 @@ mod database_practice;
 use axum::{
     body::Body,
     http::Method,
-    routing::{get, post,put, patch},
+    routing::{get, post,put, patch, delete},
     Extension, Router, middleware,
 };
 use sea_orm::DatabaseConnection;
@@ -30,6 +30,7 @@ use database_practice::get_task::get_all_task;
 use database_practice::get_task::get_one_task;
 use database_practice::atomic_update::atomic_update;
 use database_practice::partial_update::partial_update;
+use database_practice::delete_task::delete_task;
 
 #[derive(Clone)]
 pub struct SharedData {
@@ -73,5 +74,6 @@ pub fn create_routes(db:DatabaseConnection) -> Router<Body> {
         .route("/task/:task_id", get(get_one_task))
         .route("/atomic_update/:task_id", put(atomic_update))
         .route("/partial_update/:task_id", patch(partial_update))
+        .route("/task/:task_id", delete(delete_task))
         .layer(Extension(db))
 }
